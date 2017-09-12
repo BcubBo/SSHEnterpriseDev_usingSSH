@@ -2,7 +2,7 @@
 <%@ include file="../common/taglib.jsp"%>
 <link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
 <script>
 	$(function(){
