@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>SSHEnterpriseDev_usingSSH</display-name>
-
- <filter>
+  <display-name>SSH_BundleProject001</display-name>
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:applicationContext.xml</param-value>
+</context-param>
+<listener>
+	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<!-- <listener>
+	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+</listener> -->
+<filter>
+	<filter-name>OpenSessionInViewFilter</filter-name>
+	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	<!-- 防止会话工厂的id值设置错误非默认的方法 -->
+<!-- 	<init-param>
+		<param-name>sessionFactoryBeanName</param-name>
+		<param-value>SessionFactory</param-value>
+	</init-param> -->
+</filter>
+<filter-mapping>
+	<filter-name>OpenSessionInViewFilter</filter-name>
+	<url-pattern>*.action</url-pattern>
+</filter-mapping>
+   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
@@ -10,10 +32,8 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
- <welcome-file-list>
-<!--     <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file> -->
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
 <!--     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file> -->
