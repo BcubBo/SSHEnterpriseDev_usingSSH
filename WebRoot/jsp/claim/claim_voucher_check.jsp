@@ -65,7 +65,7 @@
            <td width="38%">审核：<span class="red"><strong><s:property value="#checkResult.result" /></strong></span></td>
          </tr>
          <tr>
-           <td>审核意见：<strong><s:property value="#checkResult.comment" /></td>
+           <td>审核意见：<strong><s:property value="#checkResult.comment" /></strong></td>
            <td>&nbsp;</td>
            <td>&nbsp;</td>
          </tr>
