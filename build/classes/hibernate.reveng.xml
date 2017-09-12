@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-name="BIZ_CHECK_RESULT"/>
+  <table-filter match-name="BIZ_CLAIM_VOUCHER"/>
+  <table-filter match-name="BIZ_CLAIM_VOUCHER_DETAIL"/>
+  <table-filter match-name="BIZ_CLAIM_VOUCHER_STATISTICS"/>
+  <table-filter match-name="BIZ_CLAIM_VOUYEAR__STATISTICS"/>
+  <table-filter match-name="BIZ_LEAVE"/>
+  <table-filter match-name="SYS_DEPARTMENT"/>
+  <table-filter match-name="SYS_EMPLOYEE"/>
+  <table-filter match-name="SYS_POSITION"/>
+</hibernate-reverse-engineering>
