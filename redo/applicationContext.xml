@@ -63,14 +63,13 @@
 		<!-- 简便方法,映射目标注释文件方法2 -->	
 		<property name="packagesToScan">
 			<list>
-				<value>po/</value>
+				<value>entity/</value>
 			</list>
 		</property>
 	</bean>
 	
 	<bean id="hibernateTemplate"
 		class="org.springframework.orm.hibernate3.HibernateTemplate">
-		
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	

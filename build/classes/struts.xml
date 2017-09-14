@@ -14,7 +14,7 @@
 	<!-- 字节 -->
 	<constant name="struts.multipart.maxSize" value="5000000"/>
 	<package name="login" namespace="/" extends="struts-default">
-		<action name="login" class="action.EmployeeAction" method="login">
+		<action name="login" class="actions.EmployeeAction" method="login">
 			<result name="success">/index.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>

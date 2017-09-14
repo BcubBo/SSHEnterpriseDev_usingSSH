@@ -20,12 +20,15 @@
 	</property>
 	<property name="cache.use_query_cache">true</property>
 	 -->
-  <mapping resource="po/BizClaimVoucher.hbm.xml"/>
-  <mapping resource="po/BizCheckResult.hbm.xml"/>
-  <mapping resource="po/BizClaimVoucherDetail.hbm.xml"/>
-  <mapping resource="po/SysEmployee.hbm.xml"/>
-  <mapping resource="po/SysDepartment.hbm.xml"/>
-  <mapping resource="po/SysPosition.hbm.xml"/>
+  <mapping resource="entity/CheckResult.hbm.xml"/>
+  <mapping resource="entity/ClaimVoucher.hbm.xml"/>
+  <mapping resource="entity/ClaimVoucherDetail.hbm.xml"/>
+  <mapping resource="entity/ClaimVoucherStatistics.hbm.xml"/>
+  <mapping resource="entity/ClaimVouyearStatistics.hbm.xml"/>
+  <mapping resource="entity/Department.hbm.xml"/>
+  <mapping resource="entity/Employee.hbm.xml"/>
+  <mapping resource="entity/Leave.hbm.xml"/>
+  <mapping resource="entity/Position.hbm.xml"/>
   <!-- 
 	<mapping class="po.BizClaimVoucher" />
 	<mapping class="po.BizCheckResult" />
