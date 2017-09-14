@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Conifguration 2.3//EN" 
+	"D:\JARPack\struts2lib\struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.cofiguration.xml.reload" value="true"></constant>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>	
+	<!-- 字节 -->
+	<constant name="struts.multipart.maxSize" value="5000000"/>
+	<package name="default" namespace="/" extends="json-default">
+		<interceptors>
+			<interceptor name="charset" class="filter.CharSetFilter"></interceptor>
+			<interceptor-stack name="myinterceptorstack">
+				<interceptor-ref name="charset"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myinterceptorstack" />
+	</package>
+</struts>
