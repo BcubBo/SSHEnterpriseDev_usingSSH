@@ -1,10 +1,13 @@
 package dao.impl;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -52,12 +55,19 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public int delete(Class<T> clz, Object[] ids) {
-		
+	public int delete(final Class<T> clz, final Object[] ids) {
+		//通过静态内部类的方式进行回调函数的书写
 		return this.getHibernateTemplate().execute(
 				new HibernateCallback<Integer>() {
 					public Integer doInHibernate(Session arg0)throws HibernateException,SQLException {
-						return null;
+						
+						String hql = "delete from "+clz.getSimpleName()+" where id in (:ids)";
+						return arg0.createQuery(hql).setParameterList("ids",ids).executeUpdate();
+						//
+						
+						
+						
+						
 						
 					}
 				}
@@ -70,6 +80,61 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
+	}
+	//另外一种不使用静态内部类的方式进行HibernateTemplate模板类的回调函数的书写
+/*	class test implements HibernateCallback<Integer>{
+
+		public Integer doInHibernate(Session arg0)throws HibernateException,SQLException{
+			
+			return null;
+			
+			
+		}
+	}*/
+
+	@Override
+	public T findById(Class<T> clz, Serializable id) {
+		
+		
+		
+		return this.getHibernateTemplate().get(clz, id);
+		//通过id获取查询数据
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findForPage(DetachedCriteria criteria, int pageNo, int pageSize) {
+		
+		return this.getHibernateTemplate().findByCriteria(criteria,((pageNo-1)*pageSize),pageSize);
+		//通过QBC进行查询
+	}
+
+	@Override
+	public Integer getTotalCount(DetachedCriteria criteria) {
+		return (Integer) this.getHibernateTemplate().findByCriteria(criteria).get(0);
+		//取其第一条即可,获取所有的统计条数
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findAll(Class<T> clz) {
+		
+		return this.getHibernateTemplate().find("from "+clz.getSimpleName());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findByExample(T entity) {
+		
+		return this.getHibernateTemplate().findByExample(entity);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> find(String hql, Object... params) {
+		
+		return this.getHibernateTemplate().find(hql,params);
+		//动态传参
 	}
 	
 	

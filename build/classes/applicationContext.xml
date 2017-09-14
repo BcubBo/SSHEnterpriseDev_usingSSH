@@ -67,6 +67,18 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+
+
+
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
 	</bean>
@@ -74,4 +86,10 @@
 	<context:component-scan base-package="biz,dao,po"></context:component-scan>
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	<tx:annotation-driven/>
+	<bean id="dao" class="dao.impl.BaseDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	
+	
 </beans>
