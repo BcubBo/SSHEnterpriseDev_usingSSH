@@ -25,7 +25,6 @@
 		<property name="maxTotal" value="100"></property>
 		<property name="maxIdle" value="10"></property>
 		<property name="maxWaitMillis" value="10000"></property>	
-		
 	</bean> -->
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -38,12 +37,11 @@
 		<property name="checkoutTimeout" value="${checkoutTimeout}"></property>
 		<property name="maxIdleTime"	value="${maxIdleTime}"></property>
 		<property name="initialPoolSize" value="${initPoolSize}"></property>
-			
-		
 	</bean>
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+<!-- 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
@@ -54,41 +52,22 @@
 				<prop key="hibernate.use_sql_comments">true</prop>
 			</props>
 		</property>
-		<!-- 简便方法,映射目标注释文件方法1 -->
-<!-- 		<property name="annotatedClasses">
+		<property name="mappingDirectoryLocations">
 			<list>
-				<value>classpath:po/</value>
-			</list>
-		</property>	 -->
-		<!-- 简便方法,映射目标注释文件方法2 -->	
-		<property name="packagesToScan">
-			<list>
-				<value>entity/</value>
+				<value>classpath:entity/</value>
 			</list>
 		</property>
 	</bean>
-	
 	<bean id="hibernateTemplate"
 		class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
-	
-
-
-
-
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
 	</bean>
-	
-	<context:component-scan base-package="biz,dao,po"></context:component-scan>
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	<tx:annotation-driven/>
-	<bean id="dao" class="dao.impl.BaseDaoImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	<bean id="dao" class="dao.impl.EmployeeDaoImpl" p:sessionFactory-ref="sessionFactory" p:hibernateTemplate-ref="hibernateTemplate"></bean>
+	<bean id="empService" class="service.impl.EmployeeServiceImpl"  >
+		<property name="empDao" ref="dao"></property>
 	</bean>
-	
-	
 	
 </beans>

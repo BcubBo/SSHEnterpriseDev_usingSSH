@@ -20,7 +20,7 @@
 	</property>
 	<property name="cache.use_query_cache">true</property>
 	 -->
-  <mapping resource="entity/CheckResult.hbm.xml"/>
+<!--   <mapping resource="entity/CheckResult.hbm.xml"/>
   <mapping resource="entity/ClaimVoucher.hbm.xml"/>
   <mapping resource="entity/ClaimVoucherDetail.hbm.xml"/>
   <mapping resource="entity/ClaimVoucherStatistics.hbm.xml"/>
@@ -28,14 +28,7 @@
   <mapping resource="entity/Department.hbm.xml"/>
   <mapping resource="entity/Employee.hbm.xml"/>
   <mapping resource="entity/Leave.hbm.xml"/>
-  <mapping resource="entity/Position.hbm.xml"/>
-  <!-- 
-	<mapping class="po.BizClaimVoucher" />
-	<mapping class="po.BizCheckResult" />
-	<mapping class="po.BizClaimVoucherDetail" />
-	<mapping class="po.SysEmployee" />
-	<mapping class="po.SysDepartment" />
-	<mapping class="po.SysPosition" />
-	 -->
+  <mapping resource="entity/Position.hbm.xml"/> -->
+
  </session-factory>
 </hibernate-configuration>

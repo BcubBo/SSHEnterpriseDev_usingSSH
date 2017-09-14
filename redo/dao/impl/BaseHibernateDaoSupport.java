@@ -66,6 +66,7 @@ public abstract class BaseHibernateDaoSupport<T> extends HibernateDaoSupport imp
 		return getHibernateTemplate().findByCriteria(criteria, firstResult, maxResults);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public PaginationSupport<T> findPageByCriteria(
 			final DetachedCriteria detachedCriteria, final int pageNo, final int pageSize){
 		return (PaginationSupport<T>) getHibernateTemplate().execute(new HibernateCallback() {
