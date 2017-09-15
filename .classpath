@@ -67,5 +67,6 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.33.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-aspects-3.2.9.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
