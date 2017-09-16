@@ -35,7 +35,7 @@
     <!-- 验证码操作Action配置 -->
 	<package name="random" extends="struts-default">
 	<!-- 登陆验证 -->
-			<action name="login" class="actions.EmployeeAction" method="login">
+			<action name="login" class="action.EmployeeAction" method="login">
 			<result name="success">/index.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>
