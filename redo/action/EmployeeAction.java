@@ -1,4 +1,4 @@
-package actions;
+package action;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -25,9 +25,11 @@ public class EmployeeAction extends BaseAction {
 		try {
 			employee = empService.login(employee);
 			manager = empService.getManager(employee);
+			//获取上级部门的经理
 			getSession().put(Constants.AUTH_EMPLOYEE, employee);
 			getSession().put(Constants.AUTH_EMPLOYEE_MANAGER, manager);
 			getSession().put(Constants.EMPLOYEE_POSITION, employee.getSysPosition().getNameCn());
+			//获取员工职位名称并放入session中
 			logger.debug("employee:" + employee.getSn() + "/"+employee.getPassword()+"/Logined.");
 		} catch (JboaException ex) {
 			addActionError(getText("errors.invalid.usernameorpassword"));

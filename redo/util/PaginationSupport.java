@@ -1,6 +1,6 @@
 package util;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PaginationSupport<T> {
@@ -11,13 +11,13 @@ public class PaginationSupport<T> {
 	private int currPageNo = 1;
 	
 	// 总页数
-	private int totalPageCount = 1;
+	private int totalPageCount;
 
 	// 记录总数
 	private int totalCount = 0;
 	
 	// 返回结果集
-	private List<T> items = new LinkedList<T>();
+	private List<T> items = new ArrayList<T>();
 	public PaginationSupport(){
 		
 	}

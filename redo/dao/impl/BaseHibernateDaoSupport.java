@@ -42,7 +42,6 @@ public abstract class BaseHibernateDaoSupport<T> extends HibernateDaoSupport imp
 		getHibernateTemplate().delete(instance);
 	}
 
-	@SuppressWarnings("unchecked")
 	public T get(Serializable id) {
 		T o = (T) getHibernateTemplate().get(entityClass, id);
 		return o;
