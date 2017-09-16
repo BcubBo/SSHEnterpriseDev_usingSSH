@@ -3,7 +3,7 @@
     "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 	<import resource="redo.dao.dao.xml" />
-	<import resource="redo.mail.mail.xml"/>
+<!-- 	<import resource="redo.mail.mail.xml"/> -->
 	<!--用户service配置		-->
 	<bean id="empService"
 		class="biz.impl.EmployeeServiceImpl">
