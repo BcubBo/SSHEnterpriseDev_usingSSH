@@ -48,7 +48,7 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/slf4j-nop-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-aop-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-beans-3.2.9.RELEASE.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-context-3.2.9.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-context-3.2.9.RELEASE.jar" sourcepath="C:/Users/fatal/.m2/repository/org/springframework/spring-context/3.2.9.RELEASE/spring-context-3.2.9.RELEASE-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-core-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-expression-3.2.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-jdbc-3.2.9.RELEASE.jar"/>

@@ -8,7 +8,7 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate"/>
 	</bean>
 	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
 	</bean>
 	<!-- <bean id="claimVoucherDetailDao" class="dao.impl.ClaimVoucherDetailDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
