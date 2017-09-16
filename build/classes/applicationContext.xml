@@ -64,10 +64,35 @@
 	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory">
-	</bean>
-	<bean id="dao" class="dao.impl.EmployeeDaoImpl" p:sessionFactory-ref="sessionFactory" p:hibernateTemplate-ref="hibernateTemplate"></bean>
-	<bean id="empService" class="service.impl.EmployeeServiceImpl"  >
-		<property name="empDao" ref="dao"></property>
-	</bean>
-	
+	</bean>	
+	<!-- 事务tx -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="search*" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="query*" propagation="REQUIRED"
+				read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="submit*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="check*" propagation="REQUIRED" />
+			<tx:method name="do*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* biz.*.*(..))" id="bizmethod"/>
+	<aop:advisor advice-ref="txAdvice" pointcut-ref="bizmethod"/>
+	</aop:config>
+	<import resource="redo.service.service.xml"/>
+	<import resource="redo.timetask.timetask.xml"/>
 </beans>

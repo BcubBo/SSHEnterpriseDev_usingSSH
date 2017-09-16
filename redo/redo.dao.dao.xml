@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--用户dao配置	-->
+	<bean id="empDao" class="dao.impl.EmployeeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean>
+	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- <bean id="claimVoucherDetailDao" class="dao.impl.ClaimVoucherDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="checkResultDao" class="dao.impl.CheckResultDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="claimVoucherStatisticsDao" class="dao.impl.ClaimVoucherStatisticsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="claimVouYearStatisticsDao" class="dao.impl.ClaimVouYearStatisticsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="leaveDao" class="dao.impl.LeaveDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> -->
+
+</beans>

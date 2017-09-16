@@ -1,6 +1,8 @@
 package action;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 
@@ -18,6 +20,25 @@ public class ClaimVoucherAction {
 	private int pageNo;
 	private int pageSize;
 	private PaginationSupport<ClaimVoucher> pageSupport;
+	private static Map<String,String> statusMap;
+	
+	static {
+		//静态导入状态映射数据内容
+		statusMap = new HashMap<String,String>();
+			statusMap.put(Constants.CLAIMVOUCHER_CREATED, Constants.CLAIMVOUCHER_CREATED);
+			statusMap.put(Constants.CLAIMVOUCHER_SUBMITTED, Constants.CLAIMVOUCHER_SUBMITTED);
+			statusMap.put(Constants.CLAIMVOUCHER_BACK, Constants.CLAIMVOUCHER_BACK);
+			statusMap.put(Constants.CLAIMVOUCHER_APPROVING, Constants.CLAIMVOUCHER_APPROVING);
+			statusMap.put(Constants.CLAIMVOUCHER_APPROVED, Constants.CLAIMVOUCHER_APPROVED);
+			statusMap.put(Constants.CLAIMVOUCHER_PAID, Constants.CLAIMVOUCHER_PAID);
+			statusMap.put(Constants.CLAIMVOUCHER_TERMINATED, Constants.CLAIMVOUCHER_TERMINATED);
+
+		
+		
+	}
+	
+	
+	
 	public String searchClaimVoucher() {
 		Employee emp = (Employee) ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
 		String posi = (String) ActionContext.getContext().getSession().get(Constants.EMPLOYEE_POSITION);
@@ -59,7 +80,7 @@ public class ClaimVoucherAction {
 	
 	
 	
-	
+	//setter和getter
 	public ClaimVoucherBiz getClaimVoucherBiz() {
 		return claimVoucherBiz;
 	}
@@ -101,6 +122,12 @@ public class ClaimVoucherAction {
 	}
 	public void setPageSupport(PaginationSupport<ClaimVoucher> pageSupport) {
 		this.pageSupport = pageSupport;
+	}
+	public Map<String, String> getStatusMap() {
+		return statusMap;
+	}
+	public void setStatusMap(Map<String, String> statusMap) {
+		this.statusMap = statusMap;
 	}
 
 	
