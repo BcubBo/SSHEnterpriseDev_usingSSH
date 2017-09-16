@@ -2,7 +2,7 @@
 <%@ include file="../common/taglib.jsp"%>
 <link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/common.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
 <script>
 	$(function(){
@@ -27,7 +27,7 @@
 	<div class="t">报销单列表</div>
 	<div class="pages">
 		<div class="forms">
-			 <s:form action="claimVoucher_searchClaimVoucher.action" name="queryForm">
+			 <s:form action="myClaimVoucher_searchClaimVoucher.action" name="queryForm">
 	       		<label>报销单状态</label>
 	  			<s:select name="claimVoucher.status" list="statusMap" 
 	  			listKey="key" listValue="value" headerKey="" headerValue="全部" theme="simple"></s:select>
@@ -41,7 +41,7 @@
 	       </s:form>
 	     </div>
 	<!--增加报销单 区域 开始-->
-	<s:form action="claimVoucher_searchClaimVoucher.action" name="claimVoucherForm">
+	<s:form action="myClaimVoucher_searchClaimVoucher.action" name="claimVoucherForm">
 		<table width="90%" border="0" cellspacing="0" cellpadding="0" class="list items">
 	      <tr class="even">
 	        <td>编号</td>

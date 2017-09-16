@@ -5,18 +5,23 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.BaseDao;
 //仍然是类型模糊的实现类
 //
-public class BaseDaoImpl<T> implements BaseDao<T> {
+public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	
-	private HibernateTemplate hibernateTemplate;
+	public Logger logger = (Logger)LogManager.getLogger();
+/*	static {
+		System.out.println("HibernateTemplate模板是否存在:"+hibernateTemplate.getClass());
+	}*/
 
 	@Override
 	public void save(T entity) {
@@ -73,14 +78,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 				}
 			);
 	}
-
-	public HibernateTemplate getHibernateTemplate() {
-		return hibernateTemplate;
-	}
-
-	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
-		this.hibernateTemplate = hibernateTemplate;
-	}
 	//另外一种不使用静态内部类的方式进行HibernateTemplate模板类的回调函数的书写
 /*	class test implements HibernateCallback<Integer>{
 
@@ -94,9 +91,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@Override
 	public T findById(Class<T> clz, Serializable id) {
-		
-		
-		
 		return this.getHibernateTemplate().get(clz, id);
 		//通过id获取查询数据
 	}
@@ -104,15 +98,15 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findForPage(DetachedCriteria criteria, int pageNo, int pageSize) {
-		
 		return this.getHibernateTemplate().findByCriteria(criteria,((pageNo-1)*pageSize),pageSize);
 		//通过QBC进行查询
 	}
 
 	@Override
 	public Integer getTotalCount(DetachedCriteria criteria) {
-		return (Integer) this.getHibernateTemplate().findByCriteria(criteria).get(0);
+		logger.error("hibernateTemplate是否存在:"+this.getHibernateTemplate().getClass());
 		//取其第一条即可,获取所有的统计条数
+		return ((Long)this.getHibernateTemplate().findByCriteria(criteria).get(0)).intValue();
 	}
 
 	@SuppressWarnings("unchecked")

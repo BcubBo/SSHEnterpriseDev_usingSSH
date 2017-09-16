@@ -41,7 +41,7 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 			criteria.add(Restrictions.eq("status",status));
 		}
 		if(startDate !=null) {
-			criteria.add(Restrictions.gt("createTime",startDate));
+			criteria.add(Restrictions.ge("createTime",startDate));
 			
 		}
 		if(endDate !=null) {

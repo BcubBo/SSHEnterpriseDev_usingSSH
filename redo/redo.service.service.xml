@@ -9,13 +9,6 @@
 		class="biz.impl.EmployeeServiceImpl">
 		<property name="empDao" ref="empDao" />
 	</bean>
-	<bean id="claimVoucherService"
-		class="biz.impl.ClaimVoucherBizImpl">
-		<property name="claimVoucherDao" ref="claimVoucherDao" />
-<!-- 		<property name="employeeDao" ref="empDao"></property> -->
-		<!-- <property name="claimVoucherDetailDao" ref="claimVoucherDetailDao" /> -->
-
-	</bean>
 	<!-- <bean id="claimVoucherDetailService"
 		class="biz.impl.ClaimVoucherDetailServiceImpl">
 		<property name="claimVoucherDetailDao" ref="claimVoucherDetailDao" />

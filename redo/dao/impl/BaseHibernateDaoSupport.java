@@ -60,6 +60,7 @@ public abstract class BaseHibernateDaoSupport<T> extends HibernateDaoSupport imp
 	public void update(T instance) throws DataAccessException {
 		getHibernateTemplate().update(instance);
 	}
+	@SuppressWarnings("unchecked")
 	public List<T> query(DetachedCriteria criteria,int firstResult,int maxResults) throws DataAccessException {
 		
 		return getHibernateTemplate().findByCriteria(criteria, firstResult, maxResults);

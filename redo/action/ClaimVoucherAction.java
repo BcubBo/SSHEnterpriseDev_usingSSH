@@ -24,6 +24,7 @@ public class ClaimVoucherAction {
 	
 	static {
 		//静态导入状态映射数据内容
+		System.out.println("静态代码块启动运行");
 		statusMap = new HashMap<String,String>();
 			statusMap.put(Constants.CLAIMVOUCHER_CREATED, Constants.CLAIMVOUCHER_CREATED);
 			statusMap.put(Constants.CLAIMVOUCHER_SUBMITTED, Constants.CLAIMVOUCHER_SUBMITTED);
@@ -43,9 +44,11 @@ public class ClaimVoucherAction {
 		Employee emp = (Employee) ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
 		String posi = (String) ActionContext.getContext().getSession().get(Constants.EMPLOYEE_POSITION);
 		if(Constants.POSITION_STAFF.equals(posi)) {
-			claimVoucherBiz.findForPage(emp.getSn(), null , claimVoucher == null ? null:claimVoucher.getStatus(), startDate, endDate, pageNo, pageSize);
+			System.out.println("为员工");
+			pageSupport = claimVoucherBiz.findForPage(emp.getSn(), null , claimVoucher == null ? null:claimVoucher.getStatus(), startDate, endDate, pageNo, pageSize);
 		}else {
-			claimVoucherBiz.findForPage(null, emp.getSn() , claimVoucher == null ? null:claimVoucher.getStatus(), startDate, endDate, pageNo, pageSize);
+			System.out.println("非员工");
+			pageSupport = claimVoucherBiz.findForPage(null, emp.getSn() , claimVoucher == null ? null:claimVoucher.getStatus(), startDate, endDate, pageNo, pageSize);
 		}
 		//进行各种验证
 		
@@ -127,7 +130,7 @@ public class ClaimVoucherAction {
 		return statusMap;
 	}
 	public void setStatusMap(Map<String, String> statusMap) {
-		this.statusMap = statusMap;
+		ClaimVoucherAction.statusMap = statusMap;
 	}
 
 	

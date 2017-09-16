@@ -4,7 +4,7 @@
 	<div class="t"></div>
    		<dl class="open">
 	       	<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">报销单管理</dt>
-	           <dd><a href="jsp/claim/claimVoucher_searchClaimVoucher.action">查看报销单</a></dd>
+	           <dd><a href="jsp/claim/myClaimVoucher_searchClaimVoucher.action">查看报销单</a></dd>
 	           <s:if test='#session.employee_position == "员工"'>
 	           <dd><a href="jsp/claim/claim_voucher_edit.jsp">添加报销单</a></dd>
 	           </s:if>

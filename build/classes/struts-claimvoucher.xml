@@ -7,7 +7,7 @@
 	<package name="claimvoucher" namespace="/jsp/claim" extends="struts-default">
 		<!-- 报销单操作Action配置 -->
 		<!--员工提交后，部门经理，总经理，财务登陆后调用action		-->
-		<action name="claimVoucher_*" method="{1}" class="claimVoucherAction">
+		<action name="myClaimVoucher_*" method="{1}" class="action.ClaimVoucherAction">
 			<result name="list">claim_voucher_list.jsp </result>
 			<result name="view">claim_voucher_view.jsp </result>
 			<result name="update">claim_voucher_update.jsp </result>

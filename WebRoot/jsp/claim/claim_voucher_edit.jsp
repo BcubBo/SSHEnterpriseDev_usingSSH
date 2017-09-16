@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>北大青鸟办公自动化管理系统</title>
 		<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript">
 			$(function(){				
 			//表单提交校验
