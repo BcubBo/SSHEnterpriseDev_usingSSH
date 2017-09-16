@@ -1,11 +1,11 @@
-package service.impl;
+package biz.impl;
 
 import entity.Employee;
-import service.EmployeeService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
+import biz.EmployeeService;
 import dao.EmployeeDao;
 import entity.Department;
 import entity.Employee;

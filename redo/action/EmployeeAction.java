@@ -5,10 +5,10 @@ import org.apache.logging.log4j.core.Logger;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import biz.EmployeeService;
 import common.Constants;
 import entity.Employee;
 import exception.JboaException;
-import service.EmployeeService;
 
 public class EmployeeAction extends BaseAction {
 	

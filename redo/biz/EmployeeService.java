@@ -1,4 +1,4 @@
-package service;
+package biz;
 
 import entity.Employee;
 import exception.JboaException;
