@@ -11,13 +11,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import dao.BaseDao;
 //仍然是类型模糊的实现类
 //
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
-	
+public class BaseDaoImpl<T> implements BaseDao<T> {
+	private HibernateTemplate hibernateTemplate;
 	public Logger logger = (Logger)LogManager.getLogger();
 /*	static {
 		System.out.println("HibernateTemplate模板是否存在:"+hibernateTemplate.getClass());
@@ -129,6 +129,14 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		
 		return this.getHibernateTemplate().find(hql,params);
 		//动态传参
+	}
+
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 	
 	

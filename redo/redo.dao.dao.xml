@@ -3,19 +3,18 @@
     "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 	<!--用户dao配置	-->
-	<bean id="baseDaoImpl" class="dao.impl.BaseDaoImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
-	</bean>
+
 	<bean id="empDao" class="dao.impl.EmployeeDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 		<property name="hibernateTemplate" ref="hibernateTemplate"/>
 	</bean>
 	<bean id="claimVoucherDao" class="dao.impl.ClaimVoucherDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
 	</bean>
 	<bean id="claimVoucherBiz" class="biz.impl.ClaimVoucherBizImpl">
 		<property name="claimVoucherDao" ref="claimVoucherDao"></property>
 	</bean>
+
 	<!-- <bean id="claimVoucherDetailDao" class="dao.impl.ClaimVoucherDetailDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
