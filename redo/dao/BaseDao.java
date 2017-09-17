@@ -16,11 +16,11 @@ public interface BaseDao<T> {
 	
 	public void delete(T entity);
 	public void delete(Collection<T> entities);
-	public int delete(Class<T> clz,Object[] ids);
+	public int delete(Object[] ids);
 	//传递参数告知删除的数据类型为什么
 	//Class<T>
 	
-	public T findById(Class<T> clz,Serializable id);
+	public T findById(Serializable id);
 	//
 	
 	public List<T> findForPage(DetachedCriteria criteria ,int pageNo,int pageSize);
@@ -28,7 +28,7 @@ public interface BaseDao<T> {
 	public Integer getTotalCount(DetachedCriteria criteria);
 	//查询统计
 	
-	public List<T> findAll(Class<T> clz);
+	public List<T> findAll();
 	//小数据量的时候使用的方法，无条件的查询一个类型所有的数据
 	
 	public List<T> findByExample(T entity);

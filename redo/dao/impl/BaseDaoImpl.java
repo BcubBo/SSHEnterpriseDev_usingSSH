@@ -1,6 +1,7 @@
 package dao.impl;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
@@ -18,6 +19,21 @@ import dao.BaseDao;
 //
 public class BaseDaoImpl<T> implements BaseDao<T> {
 	private HibernateTemplate hibernateTemplate;
+	private Class<T> clz;
+	//类主动获取class的类型，进行了封装
+	//使用构造方法在创建实例的时候获取类的信息
+	@SuppressWarnings("unchecked")
+	public BaseDaoImpl(){
+		
+		clz = (Class<T>)((ParameterizedType)this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+		//获取直接父类返回值为type类型
+		
+		
+		
+	}
+	
+	
+	
 	public Logger logger = (Logger)LogManager.getLogger();
 /*	static {
 		System.out.println("HibernateTemplate模板是否存在:"+hibernateTemplate.getClass());
@@ -60,7 +76,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public int delete(final Class<T> clz, final Object[] ids) {
+	public int delete(final Object[] ids) {
 		//通过静态内部类的方式进行回调函数的书写
 		return this.getHibernateTemplate().execute(
 				new HibernateCallback<Integer>() {
@@ -90,7 +106,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}*/
 
 	@Override
-	public T findById(Class<T> clz, Serializable id) {
+	public T findById(Serializable id) {
 		return this.getHibernateTemplate().get(clz, id);
 		//通过id获取查询数据
 	}
@@ -111,7 +127,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findAll(Class<T> clz) {
+	public List<T> findAll() {
 		
 		return this.getHibernateTemplate().find("from "+clz.getSimpleName());
 	}
