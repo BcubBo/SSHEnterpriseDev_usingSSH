@@ -99,8 +99,42 @@ public class ClaimVoucherAction {
 		return "view";
 	}
 	
+	//报销单更新跳转到update页面
+	public String toUpdate() {
+		claimVoucher = claimVoucherBiz.findById(claimVoucher.getId());
+		//将id放入httpsession中;
+		//将创建时间也存在httpsession中
+		return "update";
+	}
 	
-	
+	//更新操作
+	public String updateClaimVoucher() {
+		//httpsession get id
+		//然后从httpsession中获取创建时间
+		//或者走隐藏域的方式
+		//或者使用hibernate框架的方式
+		Employee emp = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
+		claimVoucher.setCreator(emp);
+		if(Constants.CLAIMVOUCHER_SUBMITTED.equals(claimVoucher.getStatus())){
+			Employee nextDeal = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE_MANAGER);
+			claimVoucher.setNextDeal(nextDeal);
+			//下一个处理人
+			
+		}
+		//设置明细集合cascade级联操作
+		//进行遍历
+		for(ClaimVoucherDetail d:detailList) {
+			
+			d.setBizClaimVoucher(claimVoucher);
+			//在报销单明细中设置报销单对象多对一操作
+			
+		}
+		claimVoucher.setDetailList(detailList);
+		//级联操作，设置报销单中的明细列表的赋值
+		claimVoucherBiz.updateNewClaimVoucher(claimVoucher);
+		//调取更新的操作
+		return "redirectList";
+	}
 	
 	
 	

@@ -22,7 +22,7 @@
                 <comment>待处理人</comment>
             </column>
         </many-to-one>
-        <property name="createTime" type="timestamp">
+        <property name="createTime" type="java.util.Date" update="false">
             <column name="create_time" length="19" not-null="true">
                 <comment>填写时间</comment>
             </column>
@@ -42,7 +42,7 @@
                 <comment>状态</comment>
             </column>
         </property>
-        <property name="modifyTime" type="timestamp">
+        <property name="modifyTime" type="java.util.Date">
             <column name="modify_time" length="19" not-null="false">
                 <comment>状态</comment>
             </column>

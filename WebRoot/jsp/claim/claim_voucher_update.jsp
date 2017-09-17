@@ -101,7 +101,7 @@
 	<div class="action  divaction">
 		<div class="t">报销单更新</div>
 		<div class="pages">
-			<s:form action="claimVoucher_updateClaimVoucher.action" name="claimForm">
+			<s:form action="myClaimVoucher_updateClaimVoucher.action" name="claimForm">
 			
 			<input type="hidden" id="rowNumber" name="rowNumber" value="<s:property value="rowNumber"/>"/>
 			<input type="hidden" id="claimId" name="claimVoucher.id" value="<s:property value="claimVoucher.id"/>"/>
@@ -135,7 +135,7 @@
 					<s:iterator value="claimVoucher.detailList" id="claimDetail" begin="0" status="s">
 					<tr>
 						<td>
-							<s:hidden id="id%{#s.index}" name="detailList[%{#s.index}].id" value="%{#claimDetail.id}"/>
+							<%-- 不设置id全部删除操作重新添加<s:hidden id="id%{#s.index}" name="detailList[%{#s.index}].id" value="%{#claimDetail.id}"/> --%>
 							<s:hidden id="item%{#s.index}" name="detailList[%{#s.index}].item" value="%{#claimDetail.item}"/>
 							<s:property value="#claimDetail.item"/></td>
 						<td>
@@ -146,8 +146,8 @@
 							<s:property value="#claimDetail.desc"/>
 						</td>
 						<td>
-							<img src=${images}/delete.gif width=16 height=16 id=DelRow${s.index}  
-							onclick=delRow(${s.index}) />
+							<img src="${images}/delete.gif" width="16" height="16" id="DelRow${s.index}"  
+							onclick="delRow(${s.index})" />
 						</td>
 					</tr>
 				</s:iterator>
@@ -166,8 +166,8 @@
 								<option value="住宿费">住宿费</option>
 							</select>
 						</td>
-						<td width="30%"><input type="text" name="claimVoucherDetail.account" id="account" /><span class=notice>*</span></td>
-						<td width="30%"><input type="text" name="claimVoucherDetail.desc" id="desc" /><span class=notice>*</span></td>
+						<td width="30%"><input type="text" name="claimVoucherDetail.account" id="account" /><span class="notice">*</span></td>
+						<td width="30%"><input type="text" name="claimVoucherDetail.desc" id="desc" /><span class="notice">*</span></td>
 						<td width="10%"><img src="${images}/add.gif" width="16" height="16" id="AddRow"/></td>
 					</tr>
 				</table>

@@ -10,13 +10,14 @@ import org.hibernate.criterion.Restrictions;
 
 import biz.ClaimVoucherBiz;
 import dao.ClaimVoucherDao;
+import dao.ClaimVoucherDetailDao;
 import entity.ClaimVoucher;
 import util.PaginationSupport;
 
 public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	private ClaimVoucherDao claimVoucherDao;
 	//dao基本需要，由spring注入
-	
+	private ClaimVoucherDetailDao claimVoucherDetailDao;
 	
 
 	@Override
@@ -98,6 +99,22 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		
 	}
 	
+	@Override
+	public void updateNewClaimVoucher(ClaimVoucher claimVoucher) {
+//		claimVoucher.setCreateTime(new Date());
+		//添加创建时间,配置文件中设置不更新操作
+		claimVoucher.setModifyTime(new Date());
+		//设置修改时间
+		//清除旧数据
+		
+		
+		claimVoucherDetailDao.deleteByClaimVoucher(claimVoucher);
+		//通过传递对象使用外键来进行删除操作
+		//更新主报销单并级联添加新的明细数据
+		claimVoucherDao.update(claimVoucher);
+		//设置及联操作，进行相应配置文件的配置
+		//保存操作
+	}
 	
 	
 	
@@ -105,6 +122,12 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	
 	
 	
+	public ClaimVoucherDetailDao getClaimVoucherDetailDao() {
+		return claimVoucherDetailDao;
+	}
+	public void setClaimVoucherDetailDao(ClaimVoucherDetailDao claimVoucherDetailDao) {
+		this.claimVoucherDetailDao = claimVoucherDetailDao;
+	}
 	//setter和getter
 	public ClaimVoucherDao getClaimVoucherDao() {
 		return claimVoucherDao;

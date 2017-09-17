@@ -15,6 +15,8 @@ public interface ClaimVoucherBiz {
 	//添加新的报销单
 	//通过id查找报销单
 	public ClaimVoucher findById(Serializable id);
+	//更新操作
+	public void updateNewClaimVoucher(ClaimVoucher claimVoucher);
 	
 
 }
