@@ -47,7 +47,7 @@
                 <comment>状态</comment>
             </column>
         </property>
-        <bag  name="detailList"  cascade="delete" inverse="true" >
+        <bag  name="detailList"  cascade="all" inverse="true" >
             <key>
                 <column name="main_id" not-null="true">
                     <comment>报销单(主单)编号</comment>

@@ -79,7 +79,26 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		
 		return result;
 	}
-
+	@Override
+	public void addNewClaimVoucher(ClaimVoucher claimVoucher) {
+		
+		claimVoucher.setCreateTime(new Date());
+		//添加创建时间
+		claimVoucher.setModifyTime(claimVoucher.getCreateTime());
+		//设置修改时间
+		claimVoucherDao.save(claimVoucher);
+		//设置及联操作，进行相应配置文件的配置
+		//保存操作
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//setter和getter
 	public ClaimVoucherDao getClaimVoucherDao() {
 		return claimVoucherDao;
 	}
@@ -87,5 +106,7 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	public void setClaimVoucherDao(ClaimVoucherDao claimVoucherDao) {
 		this.claimVoucherDao = claimVoucherDao;
 	}
+
+
 	
 }

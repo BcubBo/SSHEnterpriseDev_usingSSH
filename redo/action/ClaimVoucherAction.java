@@ -2,6 +2,7 @@ package action;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -9,6 +10,7 @@ import com.opensymphony.xwork2.ActionContext;
 import biz.ClaimVoucherBiz;
 import common.Constants;
 import entity.ClaimVoucher;
+import entity.ClaimVoucherDetail;
 import entity.Employee;
 import util.PaginationSupport;
 
@@ -21,6 +23,10 @@ public class ClaimVoucherAction {
 	private int pageSize;
 	private PaginationSupport<ClaimVoucher> pageSupport;
 	private static Map<String,String> statusMap;
+	private List<ClaimVoucherDetail> detailList;
+	
+	
+	
 	
 	static {
 		//静态导入状态映射数据内容
@@ -39,7 +45,7 @@ public class ClaimVoucherAction {
 	}
 	
 	
-	
+	//查询方法
 	public String searchClaimVoucher() {
 		Employee emp = (Employee) ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
 		String posi = (String) ActionContext.getContext().getSession().get(Constants.EMPLOYEE_POSITION);
@@ -59,9 +65,31 @@ public class ClaimVoucherAction {
 		//回到当前页面
 		
 	}
-	
-	
-	
+	//保存方法
+	//保存报销单
+	public String saveClaimVoucher() {
+		Employee emp = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
+		claimVoucher.setCreator(emp);//保存创建人
+		if(Constants.CLAIMVOUCHER_SUBMITTED.equals(claimVoucher.getStatus())){
+			Employee nextDeal = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE_MANAGER);
+			claimVoucher.setNextDeal(nextDeal);
+			//下一个处理人
+			
+		}
+		//设置明细集合cascade级联操作
+		//进行遍历
+		for(ClaimVoucherDetail d:detailList) {
+			
+			d.setBizClaimVoucher(claimVoucher);
+			//在报销单明细中设置报销单对象多对一操作
+			
+		}
+		claimVoucher.setDetailList(detailList);
+		claimVoucherBiz.addNewClaimVoucher(claimVoucher);
+		//直接添加新的报销单
+		return "redirectList";
+		//保存后跳转
+	}
 	
 	
 	
@@ -132,6 +160,13 @@ public class ClaimVoucherAction {
 	public void setStatusMap(Map<String, String> statusMap) {
 		ClaimVoucherAction.statusMap = statusMap;
 	}
+	public List<ClaimVoucherDetail> getDetailList() {
+		return detailList;
+	}
+	public void setDetailList(List<ClaimVoucherDetail> detailList) {
+		this.detailList = detailList;
+	}
+	
 
 	
 	
