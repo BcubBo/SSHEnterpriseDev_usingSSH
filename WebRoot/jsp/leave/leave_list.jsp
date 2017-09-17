@@ -19,7 +19,7 @@
 	<div class="t">请假列表</div>
 	<div class="pages">
 		<div class="forms">
-		<s:form action="leave_searchLeave.action" name="queryForm">
+		<s:form action="myLeave_searchLeave.action" name="queryForm">
 	       <label for="time">开始时间</label>
 	       <s:textfield name="startDate" id="startDate" cssClass="nwinput"></s:textfield>
 	       <label for="end-time">结束时间</label>
@@ -42,17 +42,17 @@
 	      </tr>
 	      <s:iterator value="pageSupport.items" id="leave" begin="0" status="s">
 	      <tr>
-	        <td><a href="leave_getLeaveById.action?leave.id=<s:property value="#leave.id"/>"><s:property value="#leave.id"/></a></td>
+	        <td><a href="myLeave_getLeaveById.action?leave.id=<s:property value="#leave.id"/>"><s:property value="#leave.id"/></a></td>
 	        <td><s:property value="#leave.creator.name"/>请假<s:property value="#leave.leaveDay"/>天</td>
 	        <td><s:date name="#leave.createTime" format="yyyy-MM-dd HH:mm"/></td>
 	        <td><s:date name="#leave.ModifyTime" format="yyyy-MM-dd HH:mm"/></td>
 	        <td><s:property value="#leave.approveOpinion"/></td>
 	        <td><s:property value="#leave.status"/></td>
 	        <td>
-	       	 <a href="leave_getLeaveById.action?leave.id=<s:property value="#leave.id"/>"><img src="${images}/search.gif" width="16" height="15" /></a>
+	       	 <a href="myLeave_getLeaveById.action?leave.id=<s:property value="#leave.id"/>"><img src="${images}/search.gif" width="16" height="15" /></a>
 	       	  <s:if test="#leave.nextDeal.name == #session.employee.name">
 		        <s:if test="#leave.status == '待审批'">
-	       	 		<a href="leave_toCheck.action?leave.id=<s:property value="#leave.id"/>">
+	       	 		<a href="myLeave_toCheck.action?leave.id=<s:property value="#leave.id"/>">
 	       	 		<img src="${images}/sub.gif" width="16" height="16" /></a> 
 	       	 	</s:if>
 	       	 </s:if>

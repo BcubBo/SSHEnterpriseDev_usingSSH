@@ -16,8 +16,8 @@
 			<result name="redirectList" type="redirectAction">myClaimVoucher_searchClaimVoucher </result>
 			<result name="add">claim_voucher_edit.jsp </result>
 		</action>
-		<action name="checkResult_*" method="{1}" class="checkResultAction">
-			<result name="success" type="redirectAction">claimVoucher_searchClaimVoucher </result>
+		<action name="myCheckResult_*" method="{1}" class="checkResultAction">
+			<result name="success" type="redirectAction">myClaimVoucher_searchClaimVoucher </result>
 			<result name="input" >claim_voucher_check.jsp </result>
 		</action>
 	</package>

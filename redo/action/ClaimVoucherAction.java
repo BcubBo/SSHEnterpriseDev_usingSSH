@@ -106,7 +106,12 @@ public class ClaimVoucherAction {
 		//将创建时间也存在httpsession中
 		return "update";
 	}
-	
+	public String toCheck() {
+		claimVoucher = claimVoucherBiz.findById(claimVoucher.getId());
+		//将id放入httpsession中;
+		//将创建时间也存在httpsession中
+		return "check";
+	}	
 	//更新操作
 	public String updateClaimVoucher() {
 		//httpsession get id

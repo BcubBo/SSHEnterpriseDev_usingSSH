@@ -122,7 +122,7 @@
                     <s:hidden id="status" name="claimVoucher.status" value="%{claimVoucher.status}"/>
                   </tr>
                   <tr>
-                  	<td colspan="4"><p>-------------------------------------------------------------------------------</p></td>
+                  	<td colspan="4"><p>------------------------------------------------------------------------------------------------</p></td>
                   </tr>
                 </table>
 				<table id="myTable" width="90%" border="0" cellspacing="0" cellpadding="0" class="addform-base">

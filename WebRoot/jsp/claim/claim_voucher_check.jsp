@@ -36,7 +36,7 @@
                     <td>待处理人：<s:property value="claimVoucher.nextDeal.name"/></td>
                   </tr>
                   <tr>
-                  	<td colspan="4"><p>-------------------------------------------------------------------------------</p></td>
+                  	<td colspan="4"><p>------------------------------------------------------------------------------------------------</p></td>
                   </tr>
                 </table>
           <p>&nbsp;</p>
@@ -55,7 +55,7 @@
 				</s:iterator>
       </table>
       <p>&nbsp;</p>
-      <p>-------------------------------------------------------------------------------</p>
+      <p>------------------------------------------------------------------------------------------------</p>
       
       <table width="90%" border="0" cellspacing="0" cellpadding="0" class="addform-base">
       	<s:iterator value="claimVoucher.checkResultList" id="checkResult" begin="0" status="s">
