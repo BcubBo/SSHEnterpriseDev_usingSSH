@@ -85,12 +85,19 @@ public class ClaimVoucherAction {
 			
 		}
 		claimVoucher.setDetailList(detailList);
+		//级联操作，设置报销单中的明细列表的赋值
 		claimVoucherBiz.addNewClaimVoucher(claimVoucher);
 		//直接添加新的报销单
 		return "redirectList";
 		//保存后跳转
 	}
-	
+	//通过id查询报销单功能
+	public String getClaimVoucherById() {
+		
+		claimVoucher = claimVoucherBiz.findById(claimVoucher.getId());
+		//通过id查找报销单
+		return "view";
+	}
 	
 	
 	

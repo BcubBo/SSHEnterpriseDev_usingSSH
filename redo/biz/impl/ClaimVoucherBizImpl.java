@@ -1,5 +1,6 @@
 package biz.impl;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -89,6 +90,12 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		claimVoucherDao.save(claimVoucher);
 		//设置及联操作，进行相应配置文件的配置
 		//保存操作
+	}
+	@Override
+	public ClaimVoucher findById(Serializable id) {
+		return claimVoucherDao.findById(id);
+		
+		
 	}
 	
 	

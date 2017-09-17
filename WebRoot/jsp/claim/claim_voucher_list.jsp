@@ -16,8 +16,8 @@
 		});
    	function delVoucher(id){
    		if(!confirm('确定删除报单吗')) return;
-   		
-   		document.claimVoucherForm.action = "claimVoucher_deleteClaimVoucherById.action?claimVoucher.id="+id;
+   		//确定的话直接向下执行，取消返回false不执行向下语句
+   		document.claimVoucherForm.action = "myClaimVoucher_deleteClaimVoucherById.action?claimVoucher.id="+id;
    		document.claimVoucherForm.submit();
    		
    	}
@@ -54,7 +54,7 @@
 	      </tr>
 	      <s:iterator value="pageSupport.items" id="claimVoucher" begin="0" status="s">
 	      <tr>
-	        <td><a href="claimVoucher_getClaimVoucherById.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>"><s:property value="#claimVoucher.id"/></a></td>
+	        <td><a href="myClaimVoucher_getClaimVoucherById.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>"><s:property value="#claimVoucher.id"/></a></td>
 	        <td><s:date name="#claimVoucher.createTime"/></td>
 	        <td><s:property value="#claimVoucher.creator.name"/></td>
 	        <td><s:property value="#claimVoucher.totalAccount"/></td>
@@ -62,7 +62,7 @@
 	        <td><s:property value="#claimVoucher.nextDeal.name"/></td>
 	        <td>
 	        	<s:if test="#claimVoucher.status == '新创建' || #claimVoucher.status == '已打回'">
-	        		<a href="claimVoucher_toUpdate.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
+	        		<a href="myClaimVoucher_toUpdate.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
 			        	<img src="${images}/edit.gif" width="16" height="16" /> 
 			        </a>
 			        <a onClick="delVoucher(<s:property value="#claimVoucher.id"/>)" href="#">
@@ -70,12 +70,12 @@
 			        </a>
 		        </s:if>
 		        <img src="${images}/save.gif" width="16" height="16" /> 
-		        <a href="claimVoucher_getClaimVoucherById.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
+		        <a href="myClaimVoucher_getClaimVoucherById.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
 		        	<img src="${images}/search.gif" width="16" height="15" />
 		        </a>
 		        <s:if test="#claimVoucher.nextDeal.name == #session.employee.name">
 		        	<s:if test="#claimVoucher.status == '已提交' || #claimVoucher.status == '侍审批' || #claimVoucher.status == '已审批'">
-				        <a href="claimVoucher_toCheck.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
+				        <a href="myClaimVoucher_toCheck.action?claimVoucher.id=<s:property value="#claimVoucher.id"/>">
 				         <img src="${images}/sub.gif" width="16" height="16" />
 				        </a>
 			        </s:if>
