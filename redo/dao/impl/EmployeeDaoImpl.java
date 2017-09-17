@@ -76,13 +76,13 @@ public class EmployeeDaoImpl extends BaseHibernateDaoSupport<Employee> implement
 	}
 
 	@Override
-	public int delete(Class<Employee> clz, Object[] ids) {
+	public int delete(Object[] ids) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Employee findById(Class<Employee> clz, Serializable id) {
+	public Employee findById(Serializable id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -100,7 +100,7 @@ public class EmployeeDaoImpl extends BaseHibernateDaoSupport<Employee> implement
 	}
 
 	@Override
-	public List<Employee> findAll(Class<Employee> clz) {
+	public List<Employee> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
