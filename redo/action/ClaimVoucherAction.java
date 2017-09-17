@@ -135,7 +135,11 @@ public class ClaimVoucherAction {
 		//调取更新的操作
 		return "redirectList";
 	}
-	
+	//通过报销单id删除报销单，需要及联操作
+	public String deleteClaimVoucherById() {
+		claimVoucherBiz.deleteClaimVoucher(claimVoucher);
+		return "redirectList";
+	}
 	
 	
 	

@@ -13,7 +13,7 @@
             </generator>
         </id>
 		<many-to-one name="creator" class="Employee" fetch="select" lazy="proxy">
-            <column name="create_sn" length="50" not-null="true">
+            <column name="create_sn" length="50" >
                 <comment>填报人</comment>
             </column>
         </many-to-one>
@@ -23,12 +23,12 @@
             </column>
         </many-to-one>
         <property name="createTime" type="java.util.Date" update="false">
-            <column name="create_time" length="19" not-null="true">
+            <column name="create_time" length="19" >
                 <comment>填写时间</comment>
             </column>
         </property>
         <property name="event" type="java.lang.String">
-            <column name="event" not-null="true">
+            <column name="event" >
                 <comment>事由</comment>
             </column>
         </property>
@@ -38,26 +38,26 @@
             </column>
         </property>
         <property name="status" type="java.lang.String">
-            <column name="status" length="20" not-null="true">
+            <column name="status" length="20" >
                 <comment>状态</comment>
             </column>
         </property>
         <property name="modifyTime" type="java.util.Date">
-            <column name="modify_time" length="19" not-null="false">
+            <column name="modify_time" length="19" >
                 <comment>状态</comment>
             </column>
         </property>
         <bag  name="detailList"  cascade="all" inverse="true" >
             <key>
-                <column name="main_id" not-null="true">
+                <column name="main_id" >
                     <comment>报销单(主单)编号</comment>
                 </column>
             </key>
             <one-to-many class="ClaimVoucherDetail" />
         </bag>
-        <bag  name="checkResultList"  cascade="all" inverse="true" >
+        <bag  name="checkResultList"  cascade="delete" inverse="true" >
             <key>
-                <column name="claim_id" not-null="true">
+                <column name="claim_id" >
                     <comment>报销单(主单)编号</comment>
                 </column>
             </key>

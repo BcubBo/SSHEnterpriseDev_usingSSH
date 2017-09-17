@@ -14,10 +14,16 @@
 	<bean id="claimVoucherDetailDao" class="dao.impl.ClaimVoucherDetailDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
+	<bean id="checkResultDao" class="dao.impl.CheckResultDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 	<bean id="claimVoucherBiz" class="biz.impl.ClaimVoucherBizImpl">
 		<property name="claimVoucherDao" ref="claimVoucherDao"></property>
 		<property name="claimVoucherDetailDao" ref="claimVoucherDetailDao"></property>
+		<property name="checkResultDao" ref="checkResultDao"></property>
 	</bean>
-
-
+	
+	
+	
+	
 </beans>

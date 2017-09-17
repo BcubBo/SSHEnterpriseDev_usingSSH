@@ -9,6 +9,7 @@ import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 
 import biz.ClaimVoucherBiz;
+import dao.CheckResultDao;
 import dao.ClaimVoucherDao;
 import dao.ClaimVoucherDetailDao;
 import entity.ClaimVoucher;
@@ -19,7 +20,7 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	//dao基本需要，由spring注入
 	private ClaimVoucherDetailDao claimVoucherDetailDao;
 	
-
+	private CheckResultDao checkResultDao;
 	@Override
 	public PaginationSupport<ClaimVoucher> findForPage(String createSN, String nextDealSN, String status,
 			Date startDate, Date endDate, int pageNo, int pageSize) {
@@ -95,8 +96,6 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	@Override
 	public ClaimVoucher findById(Serializable id) {
 		return claimVoucherDao.findById(id);
-		
-		
 	}
 	
 	@Override
@@ -106,8 +105,6 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		claimVoucher.setModifyTime(new Date());
 		//设置修改时间
 		//清除旧数据
-		
-		
 		claimVoucherDetailDao.deleteByClaimVoucher(claimVoucher);
 		//通过传递对象使用外键来进行删除操作
 		//更新主报销单并级联添加新的明细数据
@@ -115,6 +112,23 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		//设置及联操作，进行相应配置文件的配置
 		//保存操作
 	}
+	//删除操作
+	
+	@Override
+	public void deleteClaimVoucher(ClaimVoucher claimVoucher) {
+/*		claimVoucher = claimVoucherDao.findById(claimVoucher.getId());
+		//先进行查询
+		
+		//此可以执行
+*/		
+		//使用hql语句进行更改
+		
+		claimVoucherDetailDao.deleteByClaimVoucher(claimVoucher);
+		checkResultDao.deleteByClaimVoucher(claimVoucher);
+		//删除相关审核记录
+		claimVoucherDao.delete(claimVoucher);
+		
+	}
 	
 	
 	
@@ -122,17 +136,31 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	//setter和getter
+	
+	
+	public CheckResultDao getCheckResultDao() {
+		return checkResultDao;
+	}
+	public void setCheckResultDao(CheckResultDao checkResultDao) {
+		this.checkResultDao = checkResultDao;
+	}
 	public ClaimVoucherDetailDao getClaimVoucherDetailDao() {
 		return claimVoucherDetailDao;
 	}
 	public void setClaimVoucherDetailDao(ClaimVoucherDetailDao claimVoucherDetailDao) {
 		this.claimVoucherDetailDao = claimVoucherDetailDao;
 	}
-	//setter和getter
+
 	public ClaimVoucherDao getClaimVoucherDao() {
 		return claimVoucherDao;
 	}
-
 	public void setClaimVoucherDao(ClaimVoucherDao claimVoucherDao) {
 		this.claimVoucherDao = claimVoucherDao;
 	}

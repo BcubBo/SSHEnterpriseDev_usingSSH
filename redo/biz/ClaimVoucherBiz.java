@@ -17,6 +17,7 @@ public interface ClaimVoucherBiz {
 	public ClaimVoucher findById(Serializable id);
 	//更新操作
 	public void updateNewClaimVoucher(ClaimVoucher claimVoucher);
-	
+	//删除操作
+	public void deleteClaimVoucher(ClaimVoucher claimVoucher);
 
 }
