@@ -171,7 +171,7 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 				//部门经理
 				if(claimVoucher.getTotalAccount()<5000) {
 					//5000以内
-					claimVoucher.setStatus(Constants.CLAIMVOUCHER_APPROVED);
+					claimVoucher.setStatus(Constants.CLAIMVOUCHER_PAID);
 					Employee e = employeeDao.findByPosition(Constants.POSITION_CASHIER).get(0);
 					claimVoucher.setNextDeal(e);
 					
