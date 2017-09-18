@@ -55,7 +55,7 @@
             </key>
             <one-to-many class="ClaimVoucherDetail" />
         </bag>
-        <bag  name="checkResultList"  cascade="delete" inverse="true" >
+        <bag  name="checkResultList"  cascade="all" inverse="true" >
             <key>
                 <column name="claim_id" >
                     <comment>报销单(主单)编号</comment>

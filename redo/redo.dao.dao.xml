@@ -21,6 +21,7 @@
 		<property name="claimVoucherDao" ref="claimVoucherDao"></property>
 		<property name="claimVoucherDetailDao" ref="claimVoucherDetailDao"></property>
 		<property name="checkResultDao" ref="checkResultDao"></property>
+		<property name="employeeDao" ref="empDao"></property>
 	</bean>
 	
 	

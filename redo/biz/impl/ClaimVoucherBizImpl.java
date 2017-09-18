@@ -9,18 +9,25 @@ import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 
 import biz.ClaimVoucherBiz;
+import common.Constants;
 import dao.CheckResultDao;
 import dao.ClaimVoucherDao;
 import dao.ClaimVoucherDetailDao;
+import dao.EmployeeDao;
+import entity.CheckResult;
 import entity.ClaimVoucher;
+import entity.Employee;
 import util.PaginationSupport;
 
 public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	private ClaimVoucherDao claimVoucherDao;
 	//dao基本需要，由spring注入
 	private ClaimVoucherDetailDao claimVoucherDetailDao;
-	
+	//明细
 	private CheckResultDao checkResultDao;
+	//审查结果
+	private EmployeeDao employeeDao;
+	//员工信息
 	@Override
 	public PaginationSupport<ClaimVoucher> findForPage(String createSN, String nextDealSN, String status,
 			Date startDate, Date endDate, int pageNo, int pageSize) {
@@ -130,9 +137,90 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 		
 	}
 	
+	//审核报销单
+	@Override
+	public void checkClaimVoucher(CheckResult checkResult) {
+		checkResult.setCheckTime(new Date());
+		//设置状态/下一步处理人
+		
+		
+		//设置检查时间 /更新时间/下一步处理人
+		ClaimVoucher claimVoucher = claimVoucherDao.findById(checkResult.getClaimId());
+		
+		claimVoucher.setModifyTime(checkResult.getCheckTime());
+		
+		//更新状态
+		this.updateClaimVoucherStatus(claimVoucher,checkResult);
 	
+		
+		//更新整张报销单，保存审核记录
+		checkResultDao.save(checkResult);
+		
+	}
 	
-	
+	protected void updateClaimVoucherStatus(ClaimVoucher claimVoucher ,CheckResult checkResult) {
+		
+		String result = checkResult.getResult();
+		//获取查询结果
+		String posi = checkResult.getCheckEmployee().getSysPosition().getNameCn();
+		//获取职位名称
+		if(Constants.CHECKRESULT_PASS.equals(result)){
+			//通过后怎么处理
+			if(Constants.POSITION_FM.equals(posi)) {
+			//按照职位分工
+				//部门经理
+				if(claimVoucher.getTotalAccount()<5000) {
+					//5000以内
+					claimVoucher.setStatus(Constants.CLAIMVOUCHER_APPROVED);
+					Employee e = employeeDao.findByPosition(Constants.POSITION_CASHIER).get(0);
+					claimVoucher.setNextDeal(e);
+					
+					//直接财务处理
+				}else {
+					//如果大于5000
+					Employee e = employeeDao.findByPosition(Constants.POSITION_GM).get(0);
+					claimVoucher.setNextDeal(e);
+					//提交总经理
+				}
+				
+				
+			}else if(Constants.POSITION_GM.equals(posi)) {
+				//总经理
+				claimVoucher.setStatus(Constants.CLAIMVOUCHER_APPROVED);
+				Employee e = employeeDao.findByPosition(Constants.POSITION_CASHIER).get(0);
+				claimVoucher.setNextDeal(e);
+				//总经理同意后下发到财务
+			}else if(Constants.POSITION_CASHIER.equals(posi)){
+				//财务
+				claimVoucher.setStatus(Constants.CLAIMVOUCHER_APPROVED);
+				claimVoucher.setNextDeal(null);
+				//财务最终处理结束此报销单的整个流程
+				
+			}
+			
+			
+			
+			
+		}else if(Constants.CHECKRESULT_BACK.equals(result)) {
+			//打回后
+			claimVoucher.setStatus(Constants.CLAIMVOUCHER_BACK);
+//			claimVoucher.setNextDeal(claimVoucher.getCreator());
+			claimVoucher.setNextDeal(null);//?
+			
+			
+			
+			
+		}else if(Constants.CHECKRESULT_REJECT.equals(result)) {
+			//拒绝后
+			claimVoucher.setStatus(Constants.CLAIMVOUCHER_TERMINATED);
+			//状态为终止，报销单作废审核人不考虑
+			claimVoucher.setNextDeal(null);
+			//处理人为空
+			
+			
+		}
+		
+	}
 	
 	
 	
@@ -147,6 +235,13 @@ public class ClaimVoucherBizImpl implements ClaimVoucherBiz {
 	
 	public CheckResultDao getCheckResultDao() {
 		return checkResultDao;
+	}
+
+	public EmployeeDao getEmployeeDao() {
+		return employeeDao;
+	}
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
 	}
 	public void setCheckResultDao(CheckResultDao checkResultDao) {
 		this.checkResultDao = checkResultDao;

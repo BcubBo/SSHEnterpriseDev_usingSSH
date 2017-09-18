@@ -111,6 +111,16 @@ public class EmployeeDaoImpl extends BaseHibernateDaoSupport<Employee> implement
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employee> findByPosition(String position) {
+		//通过职位查找管理
+		String hql = "from Employee where status ='在职' and sysPosition.nameCn = ?";
+		
+		return this.getHibernateTemplate().find(hql,position);
+		//查询职位信息
+	}
+
 	
 
 }

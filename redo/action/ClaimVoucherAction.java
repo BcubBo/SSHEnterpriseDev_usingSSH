@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 import biz.ClaimVoucherBiz;
 import common.Constants;
+import entity.CheckResult;
 import entity.ClaimVoucher;
 import entity.ClaimVoucherDetail;
 import entity.Employee;
@@ -24,7 +25,7 @@ public class ClaimVoucherAction {
 	private PaginationSupport<ClaimVoucher> pageSupport;
 	private static Map<String,String> statusMap;
 	private List<ClaimVoucherDetail> detailList;
-	
+	private CheckResult checkResult;
 	
 	
 	
@@ -73,6 +74,7 @@ public class ClaimVoucherAction {
 		if(Constants.CLAIMVOUCHER_SUBMITTED.equals(claimVoucher.getStatus())){
 			Employee nextDeal = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE_MANAGER);
 			claimVoucher.setNextDeal(nextDeal);
+			
 			//下一个处理人
 			
 		}
@@ -106,13 +108,9 @@ public class ClaimVoucherAction {
 		//将创建时间也存在httpsession中
 		return "update";
 	}
-	public String toCheck() {
-		claimVoucher = claimVoucherBiz.findById(claimVoucher.getId());
-		//将id放入httpsession中;
-		//将创建时间也存在httpsession中
-		return "check";
-	}	
 	//更新操作
+
+
 	public String updateClaimVoucher() {
 		//httpsession get id
 		//然后从httpsession中获取创建时间
@@ -145,10 +143,26 @@ public class ClaimVoucherAction {
 		claimVoucherBiz.deleteClaimVoucher(claimVoucher);
 		return "redirectList";
 	}
-	
-	
-	
-	
+	//检查操作
+	public String toCheck() {
+		claimVoucher = claimVoucherBiz.findById(claimVoucher.getId());
+		System.out.println("checkResultListSize:"+claimVoucher.getCheckResultList().size());
+		//将id放入httpsession中;
+		//将创建时间也存在httpsession中
+
+		return "check";
+	}	
+	public String checkClaimVoucher() {
+		//this.searchClaimVoucher();
+		//获取对象
+		Employee emp = (Employee)ActionContext.getContext().getSession().get(Constants.AUTH_EMPLOYEE);
+		checkResult.setCheckEmployee(emp);
+		System.out.println("checkResultID:"+checkResult.getClaimId()+"checkResultID:"+checkResult.getId()+
+				"EMp中的CheckResult:"+emp.getSn());
+		//封装审核人
+		claimVoucherBiz.checkClaimVoucher(checkResult);
+		return "redirectList";
+	}
 	
 	
 	
@@ -216,11 +230,12 @@ public class ClaimVoucherAction {
 	public void setDetailList(List<ClaimVoucherDetail> detailList) {
 		this.detailList = detailList;
 	}
-	
-
-	
-	
-	
-	
+	public CheckResult getCheckResult() {
+		return checkResult;
+	}
+	public void setCheckResult(CheckResult checkResult) {
+		this.checkResult = checkResult;
+	}
 	
 }
+//尾部

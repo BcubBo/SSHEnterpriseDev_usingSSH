@@ -7,6 +7,7 @@
 	<package name="claimvoucher" namespace="/jsp/claim" extends="struts-default">
 		<!-- 报销单操作Action配置 -->
 		<!--员工提交后，部门经理，总经理，财务登陆后调用action		-->
+		
 		<action name="myClaimVoucher_*" method="{1}" class="action.ClaimVoucherAction">
 			<result name="list">claim_voucher_list.jsp </result>
 			<result name="view">claim_voucher_view.jsp </result>
@@ -16,9 +17,10 @@
 			<result name="redirectList" type="redirectAction">myClaimVoucher_searchClaimVoucher </result>
 			<result name="add">claim_voucher_edit.jsp </result>
 		</action>
-		<action name="myCheckResult_*" method="{1}" class="checkResultAction">
+	<action name="myCheckResult_*" method="{1}" class="action.ClaimVoucherAction">
 			<result name="success" type="redirectAction">myClaimVoucher_searchClaimVoucher </result>
 			<result name="input" >claim_voucher_check.jsp </result>
+			<result name="redirectList" type="redirectAction">myClaimVoucher_searchClaimVoucher </result>
 		</action>
 	</package>
 	

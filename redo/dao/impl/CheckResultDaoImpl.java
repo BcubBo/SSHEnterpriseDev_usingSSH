@@ -12,5 +12,7 @@ public class CheckResultDaoImpl extends BaseDaoImpl<CheckResult> implements Chec
 		
 		return this.getHibernateTemplate().bulkUpdate(hql);
 	}
+	
+	
 //通过id进行删除审查结果
 }

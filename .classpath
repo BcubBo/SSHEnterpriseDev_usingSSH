@@ -69,5 +69,6 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-aspects-3.2.9.RELEASE.jar"/>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -14,7 +14,8 @@ public interface EmployeeDao extends BaseDao<Employee>{
 	public Employee getGeneralManager();
 	
 	public Employee getCashier();
-
+	public List<Employee> findByPosition(String position);
+	//通过职位查管理者
 	public void saveOrUpdate(Employee employee);
 	
 	

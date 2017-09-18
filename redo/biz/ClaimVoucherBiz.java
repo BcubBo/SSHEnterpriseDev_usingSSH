@@ -3,6 +3,7 @@ package biz;
 import java.io.Serializable;
 import java.util.Date;
 
+import entity.CheckResult;
 import entity.ClaimVoucher;
 import util.PaginationSupport;
 
@@ -19,5 +20,6 @@ public interface ClaimVoucherBiz {
 	public void updateNewClaimVoucher(ClaimVoucher claimVoucher);
 	//删除操作
 	public void deleteClaimVoucher(ClaimVoucher claimVoucher);
-
+	//检查报销单的方法
+	public void checkClaimVoucher(CheckResult checkResult);
 }

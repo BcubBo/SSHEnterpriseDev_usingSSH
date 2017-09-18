@@ -76,7 +76,7 @@
          </tr>
          </s:iterator>
     </table>
-    <s:form action="checkResult_checkClaimVoucher.action" name="checkResultForm">
+    <s:form action="myCheckResult_checkClaimVoucher.action" name="checkResultForm">
     <table width="90%" border="0" cellspacing="0" cellpadding="0" class="addform-base">
 		<tr>
 			<td>
