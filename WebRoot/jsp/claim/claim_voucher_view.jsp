@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>北大青鸟办公自动化管理系统</title>
+		<title>OA管理系统</title>
 		<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css" />
 	</head>
 <body>
@@ -20,14 +20,14 @@
                   	<td >编&nbsp;&nbsp;号：<s:property value="claimVoucher.id"/></td>
                     <td>填&nbsp;写&nbsp;人：<s:property value="claimVoucher.creator.name"/></td>
                     <td>部&nbsp;&nbsp;门：<s:property value="claimVoucher.creator.sysDepartment.name"/></td>
-                    <td>职&nbsp;&nbsp;&nbsp;&nbsp;位：<s:property value="claimVoucher.creator.sysPosition.nameCn"/></td>
+                   
                   </tr>
                   <tr>
-                    <td>总金额：<s:property value="claimVoucher.totalAccount"/></td>
+                   <td>职&nbsp;&nbsp;&nbsp;&nbsp;位：<s:property value="claimVoucher.totalAccount"/></td>
                     <td>填报时间：<s:date name="claimVoucher.createTime" format="yyyy-MM-dd hh:mm:ss"/></td>
                     <td>状态：<s:property value="claimVoucher.status"/></td>
-                    <td>待处理人：<s:property value="claimVoucher.nextDeal.name"/></td>
                   </tr>
+                  <tr><td>待处理人：<s:property value="claimVoucher.nextDeal.name"/></td></tr>
                   <tr>
                   	<td colspan="4"><p>-------------------------------------------------------------------------------</p></td>
                   </tr>
@@ -58,7 +58,7 @@
            <td width="38%">审核：<span class="red"><strong><s:property value="#checkResult.result" /></strong></span></td>
          </tr>
          <tr>
-           <td>审核意见：<strong><s:property value="#checkResult.comment" /></td>
+           <td>审核意见：<strong><s:property value="#checkResult.comment" /></strong></td>
            <td>&nbsp;</td>
            <td>&nbsp;</td>
          </tr>

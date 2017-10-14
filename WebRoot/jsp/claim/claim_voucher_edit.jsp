@@ -1,16 +1,23 @@
-﻿<%@ page language="java" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" pageEncoding="UTF-8" import="java.util.Date"%>
 <%@ include file="../common/taglib.jsp"%>
+<%String time = new Date().toString(); 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>北大青鸟办公自动化管理系统</title>
 		<link href="<%=request.getContextPath() %>/css/style.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js"></script>
 		<script type="text/javascript">
-			$(function(){				
+			
+			$(function(){
+/* 				var string1 = new Date().toLocaleString().slice(0,1);
+				var timeNow = new Array(string1);
+				
+				alert(timeNow[0]);	 */			
 			//表单提交校验
-		
+			$("#timeNow").text(new Date().toLocaleString());
 			//$("#myTable tr").eq(0).hide();	
 			$("form[name='claimForm']").submit(function(){
 				//判断是否加入了问题 
@@ -102,7 +109,7 @@
 	<div class="action  divaction">
 		<div class="t">报销单添加</div>
 		<div class="pages">
-			<s:form action="claimVoucher_saveClaimVoucher.action" name="claimForm">
+			<s:form action="myClaimVoucher_saveClaimVoucher.action" name="claimForm">
 			
 			<input type="hidden" id="rowNumber" name="rowNumber" value="<s:property value="rowNumber"/>"/>
 				<table width="90%" border="0" cellspacing="0" cellpadding="0" class="addform-base">
@@ -110,7 +117,7 @@
 						<td>*填报人：</td>
 						<td><s:property value="#session.employee.name"/></td>
 						<td>*填报时间：</td>
-						<td>2013-8-17 8：30</td>
+						<td id="timeNow"></td>
 					</tr>
 					<tr>
 						<td>*总金额：￥</td>
