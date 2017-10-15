@@ -9,9 +9,6 @@
         <Logger name="com.opensymphony.xwork2" level="ERROR" >
         	<AppenderRef ref="STDOUT"/>
         </Logger>
-        <Logger name="org.apache.struts2" level="ERROR">
-			<AppenderRef ref="STDOUT"/>        
-        </Logger>
         <Logger name="action" level="DEBUG"/>
         <Logger name="biz" level="DEBUG" >
         	<AppenderRef ref="STDOUT"/>
@@ -25,10 +22,9 @@
         <Logger name="entity" level="DEBUG">
 			<AppenderRef ref="STDOUT"/>        
         </Logger>
-        <Root level="DEBUG">
+        <Root level="INFO">
             <AppenderRef ref="STDOUT"/>
         </Root>
-        
     </Loggers>
     
 </Configuration>

@@ -11,23 +11,23 @@
 	       </dl>
        <dl>
        		<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">请假管理</dt>
-	           <dd><a href="jsp/leave/leave_searchLeave.action">查看请假</a></dd>
+	           <dd><!-- <a href="jsp/leave/leave_searchLeave.action"> -->查看请假<!-- </a> --></dd>
 	           <s:if test='#session.employee_position == "员工"'>
-		       <dd><a href="jsp/leave/leave_toEdit.action">申请请假</a></dd>
+		       <dd><!-- <a href="jsp/leave/leave_toEdit.action"> -->申请请假<!-- </a> --></dd>
 		       </s:if>
        </dl>
        <s:if test='#session.employee_position == "部门经理"'>
        <dl>
        		<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">统计报表</dt>
-		       <dd><a href="jsp/statistics/claimVoucherStatistics_getDeptStatisticsByMonth.action">报销单月度统计</a></dd>
-		       <dd><a href="jsp/statistics/deptStatistics_findDeptYearStatisticsList.action">报销单年度统计</a></dd>
+		       <dd><!-- <a href="jsp/statistics/claimVoucherStatistics_getDeptStatisticsByMonth.action"> -->报销单月度统计<!-- </a> --></dd>
+		       <dd><!-- <a href="jsp/statistics/deptStatistics_findDeptYearStatisticsList.action"> -->报销单年度统计<!-- </a> --></dd>
        </dl>
        </s:if>
        <s:if test='#session.employee_position == "总经理" ||#session.employee_position == "财务"'>
        <dl>
        		<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">统计报表</dt>
-		       <dd><a href="jsp/statistics/compMonStatistics_getList.action">报销单月度统计</a></dd>
-		       <dd><a href="jsp/statistics/compYearStatistics_getList">报销单年度统计</a></dd>
+		       <dd><!-- <a href="jsp/statistics/compMonStatistics_getList.action"> -->报销单月度统计<!-- </a> --></dd>
+		       <dd><!-- <a href="jsp/statistics/compYearStatistics_getList"> -->报销单年度统计<!-- </a> --></dd>
        </dl>
       </s:if>
        <dl>
