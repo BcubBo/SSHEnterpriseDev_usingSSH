@@ -51,20 +51,19 @@
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/struts2-core-2.3.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/struts2-dojo-plugin-2.3.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/struts2-json-plugin-2.3.33.jar"/>
-	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.5.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-compat-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.3.33.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebRoot/WEB-INF/lib/spring-aspects-3.2.9.RELEASE.jar"/>
-	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.X">
+	<classpathentry exported="true" kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.X">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_144">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_144">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>

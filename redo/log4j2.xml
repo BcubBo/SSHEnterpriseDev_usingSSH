@@ -6,13 +6,26 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.opensymphony.xwork2" level="ERROR"/>
-        <Logger name="org.apache.struts2" level="ERROR"/>
-<!--    <Logger name="java.sql.Statement" level="ERROR"/>
-        <Logger name="java.sql.Connection"  level="ERROR"/>
-        <Logger name="java.sql.PreparedStatement" level="ERROR"/>
-       	  -->
-        <Root level="ERROR">
+        <Logger name="com.opensymphony.xwork2" level="ERROR" >
+        	<AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="org.apache.struts2" level="ERROR">
+			<AppenderRef ref="STDOUT"/>        
+        </Logger>
+        <Logger name="action" level="DEBUG"/>
+        <Logger name="biz" level="DEBUG" >
+        	<AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Logger name="common" level="DEBUG">
+			<AppenderRef ref="STDOUT"/>        
+        </Logger>
+        <Logger name="dao" level="DEBUG">
+			<AppenderRef ref="STDOUT"/>        
+        </Logger>>
+        <Logger name="entity" level="DEBUG">
+			<AppenderRef ref="STDOUT"/>        
+        </Logger>
+        <Root level="DEBUG">
             <AppenderRef ref="STDOUT"/>
         </Root>
         
